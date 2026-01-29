@@ -7,7 +7,7 @@
 
 .about{
   padding:160px 0;
-  background:#38040e;
+  background: linear-gradient(to bottom, #250902, #120302);
   position:relative;
   overflow:hidden;
 }

@@ -8,13 +8,12 @@
 /* ================= CONTACT PREMIUM ================= */
 
 .contact{
+
   padding:150px 0;
-  text-align:center;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(195,168,107,.12), transparent 45%),
-    linear-gradient(to bottom, #38040e, #250902);
+  background:linear-gradient(to bottom, #250902, #120302);
   position:relative;
   overflow:hidden;
+  text-align:center;
   color:#f5f1e8;
 }
 

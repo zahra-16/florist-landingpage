@@ -10,7 +10,7 @@
     </p>
 
     <p class="footer-copy">
-      © 2026 EB Florist · All Rights Reserved
+      © 2026 Flowery Florist · All Rights Reserved
     </p>
   </div>
 </footer>

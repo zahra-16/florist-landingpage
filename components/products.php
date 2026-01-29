@@ -1,18 +1,17 @@
-<!-- ================= PRODUCTS ================= -->
+<!-- ================= PRODUCTS SECTION ================= -->
 <style>
-/* ================= PRODUCTS PREMIUM ================= */
-
-.products{
+/* ================= PRODUCTS ================= */
+.products {
   padding:120px 0;
   background:#020f02;
   font-family:'Inter', sans-serif;
   scroll-margin-top:80px;
   position:relative;
-  overflow:hidden;
+  overflow: visible;
 }
 
-/* Decorative circle (lebih ringan) */
-.products::after{
+/* Decorative circle */
+.products::after {
   content:"";
   position:absolute;
   width:360px;
@@ -25,9 +24,8 @@
   z-index:1;
 }
 
-/* ================= CONTAINER ================= */
-
-.products .container{
+/* Container */
+.products .container {
   width:90%;
   max-width:1200px;
   margin:auto;
@@ -35,9 +33,8 @@
   z-index:2;
 }
 
-/* ================= TITLE ================= */
-
-.mini-title{
+/* Title */
+.mini-title {
   font-size:11px;
   letter-spacing:4px;
   color:#c3a86b;
@@ -45,177 +42,137 @@
   font-weight:400;
 }
 
-/* ================= GRID ================= */
-
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-  gap:26px;
-}
-
-/* ================= PRODUCT CARD ================= */
-
-.product-card{
+/* ================= CAROUSEL PRODUCTS ================= */
+.product-carousel-wrapper {
   position:relative;
-  display:block;
-  height:300px;
-  border-radius:18px;
+  z-index:10; 
+  padding: 20px 0;
+}
+
+.product-carousel {
+  display:flex;
+  overflow-x:auto;
+  gap:26px;
+  scroll-behavior:smooth;
+  padding: 10px 0;
+  scrollbar-width: none;
+  cursor: grab;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.product-carousel.active {
+  cursor: grabbing;
+}
+
+.product-carousel::-webkit-scrollbar {
+  display:none;
+}
+
+/* Product Card */
+.product-card {
+  min-width:260px;
+  height:360px;
+  border-radius:24px;
   overflow:hidden;
+  position:relative;
+  flex-shrink:0;
   cursor:pointer;
-
-  box-shadow:0 14px 30px rgba(0,0,0,.45);
+  box-shadow:0 12px 25px rgba(0,0,0,.45);
   transition:transform .35s ease, box-shadow .35s ease;
-  will-change:transform;
+  text-decoration: none;
+  scroll-snap-align: start;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
-/* glow DISEDERHANAKAN */
-.product-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at center, rgba(195,168,107,.18), transparent 65%);
-  opacity:0;
-  transition:opacity .35s ease;
-  z-index:0;
-}
-
-.product-card img{
+.product-card img {
   width:100%;
   height:100%;
   object-fit:cover;
   transition:transform .45s ease;
-  will-change:transform;
 }
 
-/* overlay */
-.product-card::after{
+.product-card::after {
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.45);
-  transition:background .35s ease;
+  background:rgba(0,0,0,.25);
   z-index:1;
+  transition:background .35s ease;
+  pointer-events: none; 
 }
 
-/* ================= CONTENT ================= */
-
-.product-content{
+.product-content {
   position:absolute;
   inset:0;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:8px;
   z-index:2;
   text-align:center;
   color:#fff;
 }
 
-.product-content h4{
-  font-size:12px;
-  letter-spacing:3px;
-  font-weight:400;
+.product-content h4 {
+  font-size:14px;
+  letter-spacing:2px;
+  font-weight:500;
+  margin: 0;
 }
 
-.product-content span{
-  font-size:11px;
-  letter-spacing:1.5px;
+.product-content span {
+  font-size:12px;
   opacity:.85;
 }
 
-.product-content .btn-view{
+.product-content .btn-view {
   margin-top:6px;
-  font-size:9px;
-  letter-spacing:2px;
-  padding:7px 22px;
-  border-radius:30px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  padding:6px 20px;
+  border-radius:20px;
   border:1px solid rgba(255,255,255,.6);
   color:#fff;
   text-decoration:none;
   transition:.3s ease;
 }
 
-/* ================= HOVER (DESKTOP SAJA) ================= */
-
+/* Hover effect */
 @media (hover:hover){
   .product-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 22px 40px rgba(0,0,0,.55);
+    transform:translateY(-6px);
+    box-shadow:0 20px 40px rgba(0,0,0,.55);
   }
-
   .product-card:hover img{
-    transform:scale(1.08);
+    transform:scale(1.05);
   }
-
   .product-card:hover::after{
-    background:rgba(0,0,0,.25);
+    background:rgba(0,0,0,.1);
   }
-
-  .product-card:hover::before{
-    opacity:1;
-  }
-
   .product-card:hover .btn-view{
     border-color:#c3a86b;
     color:#c3a86b;
   }
 }
 
-/* ================= DECORATIVE DOTS (LEBIH RINGAN) ================= */
+/* ================= MINI COLLECTION ================= */
+.mini-collection-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:26px;
+  margin-top:20px;
+}
 
-.product-dots{
+.mini-collection-grid .product-card {
+  min-width:auto;
+}
+
+/* Vertical text */
+.product-vertical {
   position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-}
-
-.product-dots span{
-  position:absolute;
-  width:5px;
-  height:5px;
-  background:rgba(195,168,107,.45);
-  border-radius:50%;
-  animation:floatDots 8s ease-in-out infinite;
-  will-change:transform;
-}
-
-.product-dots span:nth-child(1){
-  top:30%;
-  left:20%;
-}
-
-.product-dots span:nth-child(2){
-  top:60%;
-  left:42%;
-  animation-delay:2s;
-}
-
-.product-dots span:nth-child(3){
-  top:45%;
-  right:22%;
-  animation-delay:4s;
-}
-
-/* ================= GOLD LINE ================= */
-
-.product-line{
-  position:absolute;
-  width:160px;
-  height:1px;
-  background:linear-gradient(to right, transparent, #c3a86b, transparent);
-  transform:rotate(-20deg);
-  bottom:90px;
-  right:120px;
-  z-index:1;
-}
-
-/* ================= VERTICAL TEXT ================= */
-
-.product-vertical{
-  position:absolute;
-  right:30px;
+  right:20px;
   top:50%;
   transform:translateY(-50%) rotate(90deg);
   font-size:11px;
@@ -223,94 +180,73 @@
   text-transform:uppercase;
   color:rgba(195,168,107,.6);
   z-index:1;
+  pointer-events: none;
 }
 
-/* ================= ANIMATION ================= */
-
-@keyframes floatDots{
-  0%,100%{ transform:translateY(0); opacity:.4; }
-  50%{ transform:translateY(-8px); opacity:.8; }
-}
-
-/* ================= MOBILE OPTIMIZATION ================= */
-
+/* Mobile */
 @media(max-width:768px){
-  .products{
-    padding:90px 0;
-  }
-
-  .product-card{
-    height:230px;
-  }
-
-  /* MATIKAN DEKOR BERAT */
-  .products::after,
-  .product-line,
-  .product-vertical,
-  .product-dots{
-    display:none;
-  }
+  .products{ padding:80px 0; }
+  .product-card{ height:280px; }
+  .product-vertical{ display:none; }
 }
 </style>
 
 <section id="products" class="products premium-products">
-
-  <div class="product-dots">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="product-line"></div>
   <div class="product-vertical">Our Products</div>
 
   <div class="container">
-
     <p class="mini-title">PRODUCTS</p>
 
-    <div class="product-grid">
-
-      <a href="#" class="product-card">
-        <img src="assets/images/arrangement-with-beautiful-gerbera-vase.jpg" loading="lazy">
-        <div class="product-content">
-          <h4>BEST SELLER</h4>
-          <span>Best Seller Bouquet</span>
-          <span class="btn-view">VIEW</span>
-        </div>
-      </a>
-
-      <a href="#" class="product-card">
-        <img src="assets/images/flowers-vase-with-red-background.jpg" loading="lazy">
-        <div class="product-content">
-          <h4>PROMO</h4>
-          <span>Promo Flowers</span>
-          <span class="btn-view">VIEW</span>
-        </div>
-      </a>
-
-      <a href="#" class="product-card">
-        <img src="assets/images/beautiful-flowers-with-red-background.jpg" loading="lazy">
-        <div class="product-content">
-          <h4>SPECIAL</h4>
-          <span>Limited Edition</span>
-          <span class="btn-view">VIEW</span>
-        </div>
-      </a>
-
-      <a href="#" class="product-card">
-        <img src="assets/images/arrangement-with-beautiful-gerbera-water-vase.jpg" loading="lazy">
-        <div class="product-content">
-          <h4>LUXURY</h4>
-          <span>Exclusive</span>
-          <span class="btn-view">VIEW</span>
-        </div>
-      </a>
-
+    <div class="product-carousel-wrapper">
+      <div class="product-carousel" id="productCarousel">
+        <a href="#" class="product-card">
+          <img src="assets/images/arrangement-with-beautiful-gerbera-vase.jpg" loading="lazy">
+          <div class="product-content">
+            <h4>BEST SELLER</h4>
+            <span>Best Seller Bouquet</span>
+            <span class="btn-view">VIEW</span>
+          </div>
+        </a>
+        <a href="#" class="product-card">
+          <img src="assets/images/flowers-vase-with-red-background.jpg" loading="lazy">
+          <div class="product-content">
+            <h4>PROMO</h4>
+            <span>Promo Flowers</span>
+            <span class="btn-view">VIEW</span>
+          </div>
+        </a>
+        <a href="#" class="product-card">
+          <img src="assets/images/beautiful-flowers-with-red-background.jpg" loading="lazy">
+          <div class="product-content">
+            <h4>SPECIAL</h4>
+            <span>Limited Edition</span>
+            <span class="btn-view">VIEW</span>
+          </div>
+        </a>
+        <a href="#" class="product-card">
+          <img src="assets/images/arrangement-with-beautiful-gerbera-water-vase.jpg" loading="lazy">
+          <div class="product-content">
+            <h4>LUXURY</h4>
+            <span>Exclusive</span>
+            <span class="btn-view">VIEW</span>
+          </div>
+        </a>
+         <a href="#" class="product-card">
+          <img src="assets/images/arrangement-with-beautiful-gerbera-water-vase.jpg" loading="lazy">
+          <div class="product-content">
+            <h4>LUXURY</h4>
+            <span>Exclusive</span>
+            <span class="btn-view">VIEW</span>
+          </div>
+        </a>
+      </div>
     </div>
 
     <br><br>
 
     <p class="mini-title">MINI COLLECTION</p>
 
-    <div class="product-grid">
-
+    <div class="mini-collection-grid">
       <a href="#" class="product-card">
         <img src="assets/images/sunlit-tulips-white-vase (1).jpg" loading="lazy">
         <div class="product-content">
@@ -319,7 +255,6 @@
           <span class="btn-view">VIEW</span>
         </div>
       </a>
-
       <a href="#" class="product-card">
         <img src="assets/images/delicate-rose-bouquet.jpg" loading="lazy">
         <div class="product-content">
@@ -328,7 +263,6 @@
           <span class="btn-view">VIEW</span>
         </div>
       </a>
-
       <a href="#" class="product-card">
         <img src="assets/images/blossoms-colorful-backdrops (2).jpg" loading="lazy">
         <div class="product-content">
@@ -337,8 +271,51 @@
           <span class="btn-view">VIEW</span>
         </div>
       </a>
-
     </div>
-
   </div>
 </section>
+
+<script>
+// ================= DRAG & SWIPE CAROUSEL SMOOTH =================
+const carousel = document.getElementById('productCarousel');
+let isDown = false;
+let startX, scrollLeft;
+let rafId = null;
+
+function updateScroll(x) {
+  const walk = (x - startX);
+  carousel.scrollLeft = scrollLeft - walk;
+}
+
+carousel.addEventListener('mousedown', e => {
+  isDown = true;
+  carousel.classList.add('active');
+  startX = e.pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+carousel.addEventListener('mouseleave', () => {
+  isDown = false;
+  carousel.classList.remove('active');
+});
+carousel.addEventListener('mouseup', () => {
+  isDown = false;
+  carousel.classList.remove('active');
+});
+carousel.addEventListener('mousemove', e => {
+  if(!isDown) return;
+  e.preventDefault();
+  cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(() => updateScroll(e.pageX - carousel.offsetLeft));
+});
+
+// Touch events
+carousel.addEventListener('touchstart', e => {
+  startX = e.touches[0].pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+carousel.addEventListener('touchmove', e => {
+  e.preventDefault();
+  cancelAnimationFrame(rafId);
+  rafId = requestAnimationFrame(() => updateScroll(e.touches[0].pageX - carousel.offsetLeft));
+});
+</script>

@@ -1,11 +1,10 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ===============================
      LOAD PARTIALS / COMPONENTS
   =============================== */
   document.querySelectorAll("[data-include]").forEach(el => {
-    const file = el.getAttribute("data-include");
+    const file = el.dataset.include;
 
     fetch(file)
       .then(res => {
@@ -25,22 +24,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     e.preventDefault();
 
-    const target = document.getElementById(link.dataset.target);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    const targetId = link.dataset.target;
+    const targetEl = document.getElementById(targetId);
+
+    if (targetEl) {
+      targetEl.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
 
-    // active menu
-    document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
-    link.classList.add("active");
+    /* ACTIVE MENU (HANYA NAV LINK) */
+    if (link.closest("nav")) {
+      document.querySelectorAll("nav a").forEach(a =>
+        a.classList.remove("active")
+      );
+      link.classList.add("active");
+    }
   });
 
   /* ===============================
      NAVBAR SCROLL EFFECT
   =============================== */
-  const navbar = document.querySelector(".navbar");
-
   window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    if (!navbar) return;
+
     if (window.scrollY > 60) {
       navbar.classList.add("scrolled");
     } else {
@@ -49,4 +58,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
