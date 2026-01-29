@@ -6,21 +6,32 @@
 /* ================= ABOUT PREMIUM ================= */
 
 .about{
-  padding:140px 0;
+  padding:160px 0;
   background:#38040e;
   position:relative;
   overflow:hidden;
+}
+
+/* Gradient overlay */
+.about::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(195,168,107,.12), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.05), transparent 50%);
+  z-index:0;
 }
 
 /* Decorative circle accent */
 .about::after{
   content:"";
   position:absolute;
-  width:420px;
-  height:420px;
+  width:460px;
+  height:460px;
   border:1px solid rgba(255,255,255,.08);
   border-radius:50%;
-  right:-160px;
+  right:-180px;
   top:50%;
   transform:translateY(-50%);
   z-index:1;
@@ -30,7 +41,7 @@
 
 .about-wrapper{
   display:flex;
-  gap:80px;
+  gap:90px;
   align-items:center;
   flex-wrap:wrap;
   width:90%;
@@ -43,29 +54,49 @@
 /* ================= IMAGE ================= */
 
 .about-image{
-  width:460px;
+  width:480px;
   aspect-ratio:16/9;
-  max-height:280px;
-  border-radius:24px;
+  max-height:300px;
+  border-radius:26px;
   overflow:hidden;
-  box-shadow:0 35px 70px rgba(0,0,0,.35);
-  animation:floatImg 6s ease-in-out infinite;
-  transition:.5s ease;
+  box-shadow:0 40px 80px rgba(0,0,0,.45);
+  animation:floatImg 7s ease-in-out infinite;
+  transition:.6s cubic-bezier(.4,0,.2,1);
   position:relative;
 }
 
-/* soft gold glow */
+/* glowing ring */
 .about-image::before{
   content:"";
   position:absolute;
-  inset:-25px;
-  background:radial-gradient(circle at center, rgba(195,168,107,.35), transparent 70%);
+  inset:-28px;
+  background:
+    radial-gradient(circle at center,
+      rgba(195,168,107,.35),
+      transparent 65%);
+  filter:blur(35px);
   z-index:-1;
-  filter:blur(30px);
+}
+
+/* shimmer border */
+.about-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:26px;
+  background:linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,.25),
+    transparent 70%
+  );
+  opacity:.25;
+  animation:shine 6s linear infinite;
+  pointer-events:none;
 }
 
 .about-image:hover{
-  transform:scale(1.04);
+  transform:translateY(-8px) scale(1.05);
 }
 
 .about-image img{
@@ -77,16 +108,17 @@
 /* ================= TEXT ================= */
 
 .about-text{
-  max-width:420px;
+  max-width:430px;
+  animation:fadeUp 1.2s ease forwards;
 }
 
 .about-text h2{
   font-family:"Playfair Display",serif;
-  font-size:46px;
+  font-size:48px;
   margin-bottom:14px;
   letter-spacing:1px;
   position:relative;
-  padding-bottom:12px;
+  padding-bottom:14px;
   color:#f5f1e8;
 }
 
@@ -94,21 +126,21 @@
 .about-text h2::after{
   content:"";
   position:absolute;
-  width:60px;
+  width:70px;
   height:2px;
-  background:#c3a86b;
+  background:linear-gradient(to right, #c3a86b, transparent);
   left:0;
   bottom:0;
 }
 
 .about-text p{
   color:#e6dccf;
-  line-height:1.8;
-  font-size:15px;
-  margin-top:18px;
+  line-height:1.9;
+  font-size:15.5px;
+  margin-top:22px;
 }
 
-/* ================= FLOATING DOTS ================= */
+/* ================= FLOATING DECOR ================= */
 
 .decorative-dots{
   position:absolute;
@@ -119,60 +151,63 @@
 
 .decorative-dots span{
   position:absolute;
-  width:6px;
-  height:6px;
-  background:rgba(195,168,107,.45);
+  width:7px;
+  height:7px;
+  background:rgba(195,168,107,.55);
   border-radius:50%;
-  animation:floatDots 6s ease-in-out infinite;
+  animation:floatDots 7s ease-in-out infinite;
 }
 
-/* sparkle effect */
+/* sparkle */
 .decorative-dots span::after{
   content:"";
   position:absolute;
-  inset:-6px;
+  inset:-8px;
+  background:radial-gradient(circle, rgba(255,255,255,.6), transparent);
   border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,.5), transparent);
   opacity:.6;
 }
 
-.decorative-dots span:nth-child(1){
-  top:30%;
-  left:15%;
-  animation-delay:0s;
-}
+/* positioning */
+.decorative-dots span:nth-child(1){ top:28%; left:14%; }
+.decorative-dots span:nth-child(2){ top:60%; left:32%; animation-delay:1.5s; }
+.decorative-dots span:nth-child(3){ top:42%; right:22%; animation-delay:3s; }
+.decorative-dots span:nth-child(4){ bottom:25%; right:35%; animation-delay:4.5s; }
 
-.decorative-dots span:nth-child(2){
-  top:60%;
-  left:35%;
-  animation-delay:1.5s;
-}
+/* ================= FLOATING RING ================= */
 
-.decorative-dots span:nth-child(3){
-  top:40%;
-  right:20%;
-  animation-delay:3s;
+.floating-ring{
+  position:absolute;
+  width:140px;
+  height:140px;
+  border:1px solid rgba(195,168,107,.35);
+  border-radius:50%;
+  top:18%;
+  left:8%;
+  animation:ringFloat 9s ease-in-out infinite;
+  z-index:1;
 }
 
 /* ================= GOLD LINE ================= */
 
 .gold-line{
   position:absolute;
-  width:180px;
+  width:200px;
   height:1px;
   background:linear-gradient(to right, transparent, #c3a86b, transparent);
   transform:rotate(-20deg);
-  bottom:80px;
+  bottom:90px;
   right:120px;
   z-index:1;
+  animation:pulseLine 4s ease-in-out infinite;
 }
 
-/* ================= GOLD CORNER FRAME ================= */
+/* ================= GOLD CORNER ================= */
 
 .gold-corner{
   position:absolute;
-  width:90px;
-  height:90px;
+  width:100px;
+  height:100px;
   border:1px solid rgba(195,168,107,.6);
   z-index:1;
 }
@@ -191,52 +226,70 @@
   border-top:none;
 }
 
-/* ================= VERTICAL TEXT ACCENT ================= */
+/* ================= VERTICAL TEXT ================= */
 
 .vertical-accent{
   position:absolute;
-  left:30px;
+  left:28px;
   top:50%;
   transform:translateY(-50%) rotate(-90deg);
   font-size:12px;
   letter-spacing:6px;
   text-transform:uppercase;
-  color:rgba(195,168,107,.6);
+  color:rgba(195,168,107,.65);
   font-weight:500;
   z-index:1;
 }
 
-/* ================= ANIMATION ================= */
+/* ================= ANIMATIONS ================= */
 
 @keyframes floatImg{
   0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(-8px); }
+  50%{ transform:translateY(-10px); }
 }
 
 @keyframes floatDots{
   0%,100%{ transform:translateY(0); opacity:.4; }
-  50%{ transform:translateY(-12px); opacity:.9; }
+  50%{ transform:translateY(-14px); opacity:1; }
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(25px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes shine{
+  0%{ background-position:-200% 0; }
+  100%{ background-position:200% 0; }
+}
+
+@keyframes ringFloat{
+  0%,100%{ transform:translateY(0) scale(1); }
+  50%{ transform:translateY(-18px) scale(1.05); }
+}
+
+@keyframes pulseLine{
+  0%,100%{ opacity:.3; }
+  50%{ opacity:1; }
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:900px){
   .about{
-    padding:100px 0;
+    padding:110px 0;
   }
 
   .about-wrapper{
     justify-content:center;
     text-align:center;
-    gap:50px;
+    gap:55px;
   }
 
   .about-image{
     width:100%;
     max-width:360px;
-    aspect-ratio:16/9;
     max-height:220px;
-    margin:auto;
   }
 
   .about-text h2::after{
@@ -247,7 +300,8 @@
   .about::after,
   .gold-line,
   .gold-corner,
-  .vertical-accent{
+  .vertical-accent,
+  .floating-ring{
     display:none;
   }
 }
@@ -255,13 +309,12 @@
 
 <section id="about" class="about premium-about">
 
-  <!-- Decorative Elements -->
+  <!-- Decorations -->
   <div class="decorative-dots">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span><span></span>
   </div>
 
+  <div class="floating-ring"></div>
   <div class="gold-line"></div>
   <div class="gold-corner top-left"></div>
   <div class="gold-corner bottom-right"></div>
@@ -277,8 +330,8 @@
       <h2>Fresh Flowers</h2>
       <p>
         From our garden directly to your special moments.
-        Each bouquet is carefully crafted to deliver beauty,
-        elegance, and unforgettable memories.
+        Each bouquet is thoughtfully designed with elegance,
+        premium quality, and timeless beauty.
       </p>
     </div>
 

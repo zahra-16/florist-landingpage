@@ -1,6 +1,6 @@
 <footer class="footer">
-  <div class="footer-inner">
-    <h4>EB FLORIST</h4>
+  <div class="footer-inner fade-up">
+    <h4>FLOWERY FLORIST</h4>
 
     <div class="footer-divider"></div>
 

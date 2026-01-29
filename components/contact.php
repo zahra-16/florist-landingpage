@@ -2,54 +2,58 @@
 // contact.php
 ?>
 
-<!-- ================= FONT AWESOME ================= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 /* ================= CONTACT PREMIUM ================= */
 
 .contact{
-  padding:140px 0;
+  padding:150px 0;
   text-align:center;
-  background:#250902;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(195,168,107,.12), transparent 45%),
+    linear-gradient(to bottom, #38040e, #250902);
   position:relative;
   overflow:hidden;
+  color:#f5f1e8;
 }
 
 /* Decorative circle */
 .contact::after{
   content:"";
   position:absolute;
-  width:380px;
-  height:380px;
+  width:420px;
+  height:420px;
   border:1px solid rgba(255,255,255,.08);
   border-radius:50%;
-  left:-160px;
+  left:-180px;
   top:50%;
   transform:translateY(-50%);
   z-index:1;
+  animation:slowRotate 45s linear infinite;
 }
 
 /* Top gold line */
 .contact::before{
   content:"";
   position:absolute;
-  width:90px;
+  width:110px;
   height:2px;
   background:#c3a86b;
-  top:70px;
+  top:80px;
   left:50%;
   transform:translateX(-50%);
   z-index:1;
+  animation:pulseLine 4s ease-in-out infinite;
 }
 
 /* ================= TITLE ================= */
 
 .contact h2{
   font-family:"Playfair Display",serif;
-  font-size:46px;
+  font-size:48px;
   letter-spacing:2px;
-  margin-bottom:14px;
+  margin-bottom:16px;
   font-weight:400;
   color:#f5f1e8;
   position:relative;
@@ -59,10 +63,10 @@
 .contact .subtitle{
   font-size:14px;
   letter-spacing:2px;
-  color:#e6dccf;
+  color:#eadfd2;
   max-width:520px;
-  margin:0 auto 70px;
-  line-height:1.7;
+  margin:0 auto 80px;
+  line-height:1.8;
   position:relative;
   z-index:2;
 }
@@ -72,9 +76,9 @@
 .contact-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
+  gap:34px;
   width:90%;
-  max-width:900px;
+  max-width:920px;
   margin:auto;
   position:relative;
   z-index:2;
@@ -83,24 +87,26 @@
 /* ================= CARD ================= */
 
 .contact-card{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:24px;
-  padding:42px 26px;
-  transition:.45s ease;
-  backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:26px;
+  padding:46px 28px;
+  transition:.55s cubic-bezier(.4,0,.2,1);
+  backdrop-filter:blur(10px);
   position:relative;
   overflow:hidden;
+  animation:fadeUp 1s ease forwards;
 }
 
-/* soft glow hover */
+/* glow aura */
 .contact-card::before{
   content:"";
   position:absolute;
-  inset:-30px;
-  background:radial-gradient(circle at center, rgba(195,168,107,.25), transparent 70%);
+  inset:-35px;
+  background:radial-gradient(circle at center, rgba(195,168,107,.30), transparent 70%);
   opacity:0;
-  transition:.45s ease;
+  filter:blur(28px);
+  transition:.55s ease;
 }
 
 .contact-card:hover::before{
@@ -108,35 +114,40 @@
 }
 
 .contact-card:hover{
-  transform:translateY(-12px);
+  transform:translateY(-14px) scale(1.03);
   border-color:#c3a86b;
-  background:rgba(255,255,255,.07);
+  background:rgba(255,255,255,.08);
 }
 
 /* ================= ICON ================= */
 
 .contact-icon{
-  font-size:28px;
+  font-size:30px;
   color:#c3a86b;
-  margin-bottom:18px;
+  margin-bottom:22px;
   position:relative;
   z-index:2;
+  transition:.4s ease;
+}
+
+.contact-card:hover .contact-icon{
+  transform:scale(1.15) rotate(-5deg);
 }
 
 /* ================= TEXT ================= */
 
 .contact-card h4{
   font-size:12px;
-  letter-spacing:3px;
+  letter-spacing:4px;
   color:#c3a86b;
-  margin-bottom:12px;
+  margin-bottom:14px;
   position:relative;
   z-index:2;
 }
 
 .contact-card p{
   font-size:14px;
-  letter-spacing:1.5px;
+  letter-spacing:1.6px;
   color:#f5f1e8;
   position:relative;
   z-index:2;
@@ -153,59 +164,61 @@
 
 .contact-dots span{
   position:absolute;
-  width:6px;
-  height:6px;
-  background:rgba(195,168,107,.45);
+  width:7px;
+  height:7px;
+  background:rgba(195,168,107,.55);
   border-radius:50%;
-  animation:floatDots 6s ease-in-out infinite;
+  animation:floatDots 7s ease-in-out infinite;
 }
 
-/* sparkle */
 .contact-dots span::after{
   content:"";
   position:absolute;
-  inset:-6px;
+  inset:-7px;
   border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,.5), transparent);
+  background:radial-gradient(circle, rgba(255,255,255,.6), transparent);
   opacity:.6;
 }
 
-.contact-dots span:nth-child(1){
-  top:30%;
-  left:18%;
-}
+.contact-dots span:nth-child(1){ top:32%; left:18%; }
+.contact-dots span:nth-child(2){ top:65%; left:42%; animation-delay:1.5s; }
+.contact-dots span:nth-child(3){ top:45%; right:22%; animation-delay:3s; }
+.contact-dots span:nth-child(4){ bottom:28%; right:38%; animation-delay:4.5s; }
 
-.contact-dots span:nth-child(2){
-  top:65%;
-  left:42%;
-  animation-delay:1.5s;
-}
+/* ================= FLOATING RING ================= */
 
-.contact-dots span:nth-child(3){
-  top:45%;
-  right:22%;
-  animation-delay:3s;
+.contact-ring{
+  position:absolute;
+  width:150px;
+  height:150px;
+  border:1px solid rgba(195,168,107,.35);
+  border-radius:50%;
+  top:18%;
+  right:12%;
+  animation:ringFloat 9s ease-in-out infinite;
+  z-index:1;
 }
 
 /* ================= DIAGONAL GOLD LINE ================= */
 
 .contact-line{
   position:absolute;
-  width:180px;
+  width:200px;
   height:1px;
   background:linear-gradient(to right, transparent, #c3a86b, transparent);
   transform:rotate(-25deg);
-  bottom:100px;
-  right:120px;
+  bottom:110px;
+  right:130px;
   z-index:1;
+  animation:pulseLine 4s ease-in-out infinite;
 }
 
-/* ================= GOLD CORNER FRAME ================= */
+/* ================= GOLD CORNER ================= */
 
 .contact-corner{
   position:absolute;
-  width:90px;
-  height:90px;
+  width:100px;
+  height:100px;
   border:1px solid rgba(195,168,107,.6);
   z-index:1;
 }
@@ -234,36 +247,57 @@
   font-size:12px;
   letter-spacing:6px;
   text-transform:uppercase;
-  color:rgba(195,168,107,.6);
+  color:rgba(195,168,107,.65);
   z-index:1;
 }
 
-/* ================= ANIMATION ================= */
+/* ================= ANIMATIONS ================= */
 
 @keyframes floatDots{
   0%,100%{ transform:translateY(0); opacity:.4; }
-  50%{ transform:translateY(-12px); opacity:.9; }
+  50%{ transform:translateY(-14px); opacity:1; }
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(30px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes ringFloat{
+  0%,100%{ transform:translateY(0) scale(1); }
+  50%{ transform:translateY(-18px) scale(1.05); }
+}
+
+@keyframes pulseLine{
+  0%,100%{ opacity:.3; }
+  50%{ opacity:1; }
+}
+
+@keyframes slowRotate{
+  from{ transform:translateY(-50%) rotate(0deg); }
+  to{ transform:translateY(-50%) rotate(360deg); }
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:768px){
   .contact{
-    padding:110px 0;
+    padding:120px 0;
   }
 
   .contact h2{
-    font-size:34px;
+    font-size:36px;
   }
 
   .contact .subtitle{
-    margin-bottom:45px;
+    margin-bottom:50px;
   }
 
   .contact::after,
   .contact-line,
   .contact-corner,
-  .contact-vertical{
+  .contact-vertical,
+  .contact-ring{
     display:none;
   }
 }
@@ -273,11 +307,10 @@
 
   <!-- Decorative Elements -->
   <div class="contact-dots">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span><span></span>
   </div>
 
+  <div class="contact-ring"></div>
   <div class="contact-line"></div>
   <div class="contact-corner top-right"></div>
   <div class="contact-corner bottom-left"></div>

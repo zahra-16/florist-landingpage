@@ -1,154 +1,188 @@
+/* ================= GLOBAL ================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
 body{
-font-family:Poppins,sans-serif;
-background:#0f1a14;
-color:#f5f5f5;
+  font-family:Poppins,sans-serif;
+  background:#0f1a14;
+  color:#f5f5f5;
 }
 
 .container{
-width:90%;
-max-width:1200px;
-margin:auto;
+  width:90%;
+  max-width:1200px;
+  margin:auto;
 }
 
-/* ================= NAVBAR ================= */
+/* ================= NAVBAR PREMIUM ================= */
 
 .navbar{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(15,26,20,.8);
-backdrop-filter:blur(10px);
-padding:22px 0;
-z-index:999;
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(15,26,20,.75);
+  backdrop-filter:blur(12px);
+  padding:22px 0;
+  z-index:999;
+  transition:.4s ease;
+}
+
+.navbar.scrolled{
+  padding:16px 0;
+  background:rgba(15,26,20,.9);
 }
 
 .nav-wrapper{
-display:flex;
-justify-content:space-between;
-align-items:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
+/* Logo */
 .logo{
-font-size:22px;
-letter-spacing:3px;
-font-weight:300;
+  font-size:22px;
+  letter-spacing:4px;
+  font-weight:300;
+  position:relative;
+}
+
+/* soft glow */
+.logo::after{
+  content:"";
+  position:absolute;
+  inset:-12px;
+  background:radial-gradient(circle, rgba(195,168,107,.35), transparent 70%);
+  opacity:.25;
+  z-index:-1;
+}
+
+/* Nav links */
+nav{
+  display:flex;
 }
 
 nav a{
-margin-left:30px;
-color:#bbb;
-text-decoration:none;
-font-size:13px;
-letter-spacing:1px;
+  position:relative;
+  margin-left:34px;
+  color:#bdbdbd;
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:1.5px;
+  transition:.35s ease;
+}
+
+/* underline */
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:1px;
+  background:#c3a86b;
+  transition:.35s ease;
 }
 
 nav a:hover{
-color:#c3a86b;
+  color:#fff;
 }
 
+nav a:hover::after,
+nav a.active::after{
+  width:100%;
+}
+
+nav a.active{
+  color:#c3a86b;
+}
 
 /* ================= FOOTER ================= */
 
 .footer{
-  padding:70px 0 50px;
-  background:#0b130f; /* ijo gelap */
+  padding:80px 0 60px;
+  background:#0b130f;
   text-align:center;
   position:relative;
+  overflow:hidden;
+}
+
+/* glow */
+.footer::before{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  background:radial-gradient(circle, rgba(195,168,107,.18), transparent 70%);
+  top:-160px;
+  left:50%;
+  transform:translateX(-50%);
 }
 
 .footer-inner{
   width:90%;
-  max-width:800px;
+  max-width:820px;
   margin:auto;
+  position:relative;
+  z-index:2;
 }
 
-/* Brand */
 .footer h4{
   font-family:"Playfair Display", serif;
   font-size:30px;
   letter-spacing:4px;
   font-weight:400;
-  color:#f5f5f5;
   margin-bottom:20px;
 }
 
-/* Divider emas */
 .footer-divider{
-  width:70px;
+  width:80px;
   height:2px;
   background:#c3a86b;
-  margin:0 auto 26px;
+  margin:0 auto 28px;
 }
 
-/* Description */
 .footer-desc{
   font-size:13px;
   line-height:1.9;
   letter-spacing:1px;
   color:#cfcfcf;
-  margin-bottom:32px;
+  margin-bottom:34px;
 }
 
-/* Copyright */
 .footer-copy{
   font-size:11px;
   letter-spacing:2px;
-  color:#999;
+  color:#9a9a9a;
+}
+
+/* ================= ANIMATION ================= */
+
+.fade-up{
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* ================= MOBILE ================= */
 
 @media(max-width:768px){
-  .footer{
-    padding:55px 0 40px;
+  nav a{
+    margin-left:20px;
   }
 
   .footer h4{
     font-size:24px;
   }
-
-  .footer-desc{
-    font-size:12px;
-  }
-}
-
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:900px){
-
-.hero-premium-wrap{
-flex-direction:column;
-text-align:center;
-}
-
-.hero-left img{
-width:100%;
-}
-
-.hero-right h1{
-font-size:44px;
-}
-
-.mini-products{
-justify-content:center;
-}
-
-.hero-premium::after{
-display:none;
-}
-
-.about-wrapper{
-justify-content:center;
-text-align:center;
-}
-
 }
