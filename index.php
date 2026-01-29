@@ -14,9 +14,11 @@
 <!-- PAGE SECTIONS -->
 <div data-include="components/hero.php"></div>
 <div data-include="components/about.php"></div>
+<div data-include="components/trust.php"></div>
 <div data-include="components/categories.php"></div>
 <div data-include="components/products.php"></div>
 <div data-include="components/testimoni.php"></div>
+<div data-include="components/why-choose-florist.php"></div>
 <div data-include="components/contact.php"></div>
 
 <!-- GLOBAL -->

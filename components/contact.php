@@ -1,23 +1,18 @@
-<?php
-// contact.php
-?>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-/* ================= CONTACT PREMIUM ================= */
+/* ================= CONTACT ================= */
 
 .contact{
-
   padding:150px 0;
-  background:linear-gradient(to bottom, #250902, #120302);
+  background:#120503;
+  font-family:'Inter', sans-serif;
+  color:#f5f1e8;
   position:relative;
   overflow:hidden;
-  text-align:center;
-  color:#f5f1e8;
 }
 
-/* Decorative circle */
+/* decorative circle */
 .contact::after{
   content:"";
   position:absolute;
@@ -28,59 +23,87 @@
   left:-180px;
   top:50%;
   transform:translateY(-50%);
-  z-index:1;
   animation:slowRotate 45s linear infinite;
 }
 
-/* Top gold line */
+/* top gold line */
 .contact::before{
   content:"";
   position:absolute;
   width:110px;
   height:2px;
   background:#c3a86b;
-  top:80px;
+  top:90px;
   left:50%;
   transform:translateX(-50%);
-  z-index:1;
   animation:pulseLine 4s ease-in-out infinite;
 }
 
-/* ================= TITLE ================= */
+/* ================= DECOR ================= */
 
-.contact h2{
-  font-family:"Playfair Display",serif;
-  font-size:48px;
-  letter-spacing:2px;
-  margin-bottom:16px;
-  font-weight:400;
-  color:#f5f1e8;
-  position:relative;
-  z-index:2;
+.contact-ring{
+  position:absolute;
+  width:150px;
+  height:150px;
+  border:1px solid rgba(195,168,107,.35);
+  border-radius:50%;
+  top:22%;
+  right:12%;
+  animation:ringFloat 9s ease-in-out infinite;
 }
 
-.contact .subtitle{
-  font-size:14px;
-  letter-spacing:2px;
-  color:#eadfd2;
-  max-width:520px;
-  margin:0 auto 80px;
-  line-height:1.8;
+.contact-line{
+  position:absolute;
+  width:200px;
+  height:1px;
+  background:linear-gradient(to right, transparent, #c3a86b, transparent);
+  transform:rotate(-25deg);
+  bottom:120px;
+  right:130px;
+  animation:pulseLine 4s ease-in-out infinite;
+}
+
+.contact-vertical{
+  position:absolute;
+  right:30px;
+  top:50%;
+  transform:translateY(-50%) rotate(90deg);
+  font-size:12px;
+  letter-spacing:6px;
+  color:rgba(195,168,107,.65);
+}
+
+/* ================= CONTENT ================= */
+
+.contact .container{
+  width:90%;
+  max-width:1100px;
+  margin:auto;
   position:relative;
   z-index:2;
+  text-align:center;
+}
+
+.contact .mini-title{
+  font-size:11px;
+  letter-spacing:4px;
+  color:#c3a86b;
+}
+
+.contact h2{
+  font-size:34px;
+  font-weight:500;
+  margin:12px auto 40px;
+  max-width:520px;
+  line-height:1.4;
 }
 
 /* ================= GRID ================= */
 
 .contact-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:34px;
-  width:90%;
-  max-width:920px;
-  margin:auto;
-  position:relative;
-  z-index:2;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
 }
 
 /* ================= CARD ================= */
@@ -89,33 +112,48 @@
   background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.14);
   border-radius:26px;
-  padding:46px 28px;
-  transition:.55s cubic-bezier(.4,0,.2,1);
-  backdrop-filter:blur(10px);
+  padding:46px 30px;
   position:relative;
   overflow:hidden;
-  animation:fadeUp 1s ease forwards;
+  backdrop-filter:blur(10px);
+  transition:.55s cubic-bezier(.4,0,.2,1);
 }
 
-/* glow aura */
+/* glow */
 .contact-card::before{
   content:"";
   position:absolute;
-  inset:-35px;
-  background:radial-gradient(circle at center, rgba(195,168,107,.30), transparent 70%);
+  inset:-40px;
+  background:radial-gradient(circle, rgba(195,168,107,.3), transparent 70%);
   opacity:0;
-  filter:blur(28px);
-  transition:.55s ease;
+  filter:blur(30px);
+  transition:.5s ease;
 }
-
-.contact-card:hover::before{
-  opacity:1;
-}
+.contact-card:hover::before{ opacity:1; }
 
 .contact-card:hover{
   transform:translateY(-14px) scale(1.03);
   border-color:#c3a86b;
   background:rgba(255,255,255,.08);
+}
+
+/* ================= SHAPE VARIATION ================= */
+
+.contact-card:nth-child(1){
+  border-radius:30px 30px 60px 30px;
+}
+.contact-card:nth-child(2){
+  border-radius:60px 30px 30px 60px;
+  background:linear-gradient(
+    145deg,
+    rgba(195,168,107,.18),
+    rgba(255,255,255,.05)
+  );
+  border-color:#c3a86b;
+  transform:scale(1.06);
+}
+.contact-card:nth-child(3){
+  border-radius:30px 60px 30px 30px;
 }
 
 /* ================= ICON ================= */
@@ -124,13 +162,9 @@
   font-size:30px;
   color:#c3a86b;
   margin-bottom:22px;
-  position:relative;
-  z-index:2;
-  transition:.4s ease;
 }
-
-.contact-card:hover .contact-icon{
-  transform:scale(1.15) rotate(-5deg);
+.contact-icon i{
+  filter:drop-shadow(0 0 12px rgba(195,168,107,.4));
 }
 
 /* ================= TEXT ================= */
@@ -140,138 +174,46 @@
   letter-spacing:4px;
   color:#c3a86b;
   margin-bottom:14px;
-  position:relative;
-  z-index:2;
 }
 
 .contact-card p{
   font-size:14px;
   letter-spacing:1.6px;
-  color:#f5f1e8;
-  position:relative;
-  z-index:2;
+  line-height:1.7;
+  margin-bottom:26px;
 }
 
-/* ================= FLOATING DOTS ================= */
+/* ================= BUTTON ================= */
 
-.contact-dots{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-}
-
-.contact-dots span{
-  position:absolute;
-  width:7px;
-  height:7px;
-  background:rgba(195,168,107,.55);
-  border-radius:50%;
-  animation:floatDots 7s ease-in-out infinite;
-}
-
-.contact-dots span::after{
-  content:"";
-  position:absolute;
-  inset:-7px;
-  border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,.6), transparent);
-  opacity:.6;
-}
-
-.contact-dots span:nth-child(1){ top:32%; left:18%; }
-.contact-dots span:nth-child(2){ top:65%; left:42%; animation-delay:1.5s; }
-.contact-dots span:nth-child(3){ top:45%; right:22%; animation-delay:3s; }
-.contact-dots span:nth-child(4){ bottom:28%; right:38%; animation-delay:4.5s; }
-
-/* ================= FLOATING RING ================= */
-
-.contact-ring{
-  position:absolute;
-  width:150px;
-  height:150px;
-  border:1px solid rgba(195,168,107,.35);
-  border-radius:50%;
-  top:18%;
-  right:12%;
-  animation:ringFloat 9s ease-in-out infinite;
-  z-index:1;
-}
-
-/* ================= DIAGONAL GOLD LINE ================= */
-
-.contact-line{
-  position:absolute;
-  width:200px;
-  height:1px;
-  background:linear-gradient(to right, transparent, #c3a86b, transparent);
-  transform:rotate(-25deg);
-  bottom:110px;
-  right:130px;
-  z-index:1;
-  animation:pulseLine 4s ease-in-out infinite;
-}
-
-/* ================= GOLD CORNER ================= */
-
-.contact-corner{
-  position:absolute;
-  width:100px;
-  height:100px;
+.contact-card a{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 26px;
+  border-radius:30px;
+  font-size:11px;
+  letter-spacing:2px;
+  text-decoration:none;
+  color:#c3a86b;
   border:1px solid rgba(195,168,107,.6);
-  z-index:1;
+  transition:.4s ease;
 }
 
-.contact-corner.top-right{
-  top:60px;
-  right:60px;
-  border-left:none;
-  border-bottom:none;
+.contact-card a:hover{
+  background:#c3a86b;
+  color:#120503;
 }
 
-.contact-corner.bottom-left{
-  bottom:60px;
-  left:60px;
-  border-right:none;
-  border-top:none;
-}
-
-/* ================= VERTICAL TEXT ================= */
-
-.contact-vertical{
-  position:absolute;
-  right:30px;
-  top:50%;
-  transform:translateY(-50%) rotate(90deg);
-  font-size:12px;
-  letter-spacing:6px;
-  text-transform:uppercase;
-  color:rgba(195,168,107,.65);
-  z-index:1;
-}
-
-/* ================= ANIMATIONS ================= */
-
-@keyframes floatDots{
-  0%,100%{ transform:translateY(0); opacity:.4; }
-  50%{ transform:translateY(-14px); opacity:1; }
-}
-
-@keyframes fadeUp{
-  from{ opacity:0; transform:translateY(30px); }
-  to{ opacity:1; transform:translateY(0); }
-}
+/* ================= ANIMATION ================= */
 
 @keyframes ringFloat{
   0%,100%{ transform:translateY(0) scale(1); }
   50%{ transform:translateY(-18px) scale(1.05); }
 }
-
 @keyframes pulseLine{
   0%,100%{ opacity:.3; }
   50%{ opacity:1; }
 }
-
 @keyframes slowRotate{
   from{ transform:translateY(-50%) rotate(0deg); }
   to{ transform:translateY(-50%) rotate(360deg); }
@@ -280,73 +222,61 @@
 /* ================= MOBILE ================= */
 
 @media(max-width:768px){
-  .contact{
-    padding:120px 0;
-  }
-
-  .contact h2{
-    font-size:36px;
-  }
-
-  .contact .subtitle{
-    margin-bottom:50px;
-  }
+  .contact{ padding:110px 0; }
+  .contact h2{ font-size:28px; }
 
   .contact::after,
+  .contact-ring,
   .contact-line,
-  .contact-corner,
-  .contact-vertical,
-  .contact-ring{
+  .contact-vertical{
     display:none;
+  }
+
+  .contact-card:nth-child(2){
+    transform:none;
   }
 }
 </style>
 
-<section id="contact" class="contact premium-contact">
-
-  <!-- Decorative Elements -->
-  <div class="contact-dots">
-    <span></span><span></span><span></span><span></span>
-  </div>
+<section class="contact" id="contact">
 
   <div class="contact-ring"></div>
   <div class="contact-line"></div>
-  <div class="contact-corner top-right"></div>
-  <div class="contact-corner bottom-left"></div>
-  <div class="contact-vertical">Get In Touch</div>
+  <div class="contact-vertical">Contact</div>
 
-  <h2>Contact</h2>
-  <p class="subtitle">
-    We’re always ready to help you choose the perfect flowers
-    for your special moments.
-  </p>
+  <div class="container">
+    <p class="mini-title">CONTACT</p>
+    <h2>We’re Always Ready to Help You</h2>
 
-  <div class="contact-grid">
+    <div class="contact-grid">
 
-    <div class="contact-card">
-      <div class="contact-icon">
-        <i class="fa-solid fa-location-dot"></i>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <h4>LOCATION</h4>
+        <p>Jakarta, Indonesia</p>
+        <a href="#">VIEW MAP <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      <h4>LOCATION</h4>
-      <p>Jakarta, Indonesia</p>
-    </div>
 
-    <div class="contact-card">
-      <div class="contact-icon">
-        <i class="fa-brands fa-whatsapp"></i>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <h4>WHATSAPP</h4>
+        <p>Fast response for orders & consultations</p>
+        <a href="#">CHAT NOW <i class="fa-solid fa-paper-plane"></i></a>
       </div>
-      <h4>WHATSAPP</h4>
-      <p>0812 3456 7890</p>
-    </div>
 
-    <div class="contact-card">
-      <div class="contact-icon">
-        <i class="fa-brands fa-instagram"></i>
+      <div class="contact-card">
+        <div class="contact-icon">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <h4>EMAIL</h4>
+        <p>Send us your special requests anytime</p>
+        <a href="#">SEND EMAIL <i class="fa-solid fa-arrow-right"></i></a>
       </div>
-      <h4>INSTAGRAM</h4>
-      <p>@ebflorist</p>
-    </div>
 
+    </div>
   </div>
-
 </section>

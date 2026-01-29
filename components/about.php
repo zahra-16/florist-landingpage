@@ -2,25 +2,25 @@
 // about.php
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts (INTER ONLY) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 /* ================= ABOUT PREMIUM ================= */
 
 .about{
   padding:160px 0;
-  background: linear-gradient(to bottom, #250902, #120302);
+  background:#120503;
   position:relative;
   overflow:hidden;
-}
-
-/* Gradient overlay */
-.about::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(195,168,107,.12), transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(255,255,255,.05), transparent 50%);
-  z-index:0;
+  font-family:'Inter',sans-serif;
+  color:#f5f1e8;
 }
 
 /* Decorative circle accent */
@@ -70,10 +70,7 @@
   content:"";
   position:absolute;
   inset:-28px;
-  background:
-    radial-gradient(circle at center,
-      rgba(195,168,107,.35),
-      transparent 65%);
+  background:radial-gradient(circle, rgba(195,168,107,.35), transparent 65%);
   filter:blur(35px);
   z-index:-1;
 }
@@ -113,13 +110,13 @@
 }
 
 .about-text h2{
-  font-family:"Playfair Display",serif;
-  font-size:48px;
+  font-size:38px;
+  font-weight:500;
+  letter-spacing:2px;
   margin-bottom:14px;
-  letter-spacing:1px;
   position:relative;
   padding-bottom:14px;
-  color:#f5f1e8;
+  text-transform:uppercase;
 }
 
 /* gold underline */
@@ -136,11 +133,13 @@
 .about-text p{
   color:#e6dccf;
   line-height:1.9;
-  font-size:15.5px;
+  font-size:15px;
+  font-weight:400;
+  letter-spacing:1.4px;
   margin-top:22px;
 }
 
-/* ================= FLOATING DECOR ================= */
+/* ================= DECOR ================= */
 
 .decorative-dots{
   position:absolute;
@@ -158,7 +157,6 @@
   animation:floatDots 7s ease-in-out infinite;
 }
 
-/* sparkle */
 .decorative-dots span::after{
   content:"";
   position:absolute;
@@ -168,13 +166,12 @@
   opacity:.6;
 }
 
-/* positioning */
 .decorative-dots span:nth-child(1){ top:28%; left:14%; }
 .decorative-dots span:nth-child(2){ top:60%; left:32%; animation-delay:1.5s; }
 .decorative-dots span:nth-child(3){ top:42%; right:22%; animation-delay:3s; }
 .decorative-dots span:nth-child(4){ bottom:25%; right:35%; animation-delay:4.5s; }
 
-/* ================= FLOATING RING ================= */
+/* ================= ACCENTS ================= */
 
 .floating-ring{
   position:absolute;
@@ -188,8 +185,6 @@
   z-index:1;
 }
 
-/* ================= GOLD LINE ================= */
-
 .gold-line{
   position:absolute;
   width:200px;
@@ -201,8 +196,6 @@
   z-index:1;
   animation:pulseLine 4s ease-in-out infinite;
 }
-
-/* ================= GOLD CORNER ================= */
 
 .gold-corner{
   position:absolute;
@@ -226,14 +219,12 @@
   border-top:none;
 }
 
-/* ================= VERTICAL TEXT ================= */
-
 .vertical-accent{
   position:absolute;
   left:28px;
   top:50%;
   transform:translateY(-50%) rotate(-90deg);
-  font-size:12px;
+  font-size:11px;
   letter-spacing:6px;
   text-transform:uppercase;
   color:rgba(195,168,107,.65);
@@ -306,10 +297,12 @@
   }
 }
 </style>
+</head>
 
-<section id="about" class="about premium-about">
+<body>
 
-  <!-- Decorations -->
+<section id="about" class="about">
+
   <div class="decorative-dots">
     <span></span><span></span><span></span><span></span>
   </div>
@@ -338,3 +331,6 @@
   </div>
 
 </section>
+
+</body>
+</html>

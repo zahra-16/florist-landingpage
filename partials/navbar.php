@@ -10,6 +10,7 @@
       <a href="#" data-target="categories">Categories</a>
       <a href="#" data-target="products">Products</a>
       <a href="#" data-target="testimoni">Testimoni</a>
+      <!-- <a href="#" data-target="why-choose-florist">Why Choose Us</a> -->
       <a href="#" data-target="contact">Contact</a>
     </nav>
 
